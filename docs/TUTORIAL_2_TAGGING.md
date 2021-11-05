@@ -205,7 +205,7 @@ for entity in sentence.get_labels('ner'):
     print(entity)
 ```
 
-This should print: 
+출력 : 
 ```console
 LOC [برلين (2)] (0.9803) 
 ```
