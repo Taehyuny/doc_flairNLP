@@ -60,7 +60,7 @@ Token: 5 .
 
 ## 토큰화
 
-위와 같이 'Sentence'를 생성하면 텍스트는 [세그톡 라이브러리](https://pypi.org/project/segtok/))에 의해 자동 토큰화됩니다.
+위와 같이 'Sentence'를 생성하면 텍스트는 [세그톡 라이브러리](https://pypi.org/project/segtok/)에 의해 자동 토큰화됩니다.
 
 ### 토큰화를 사용 안하기
 
@@ -88,7 +88,7 @@ from flair.data import Sentence
 from flair.tokenization import JapaneseTokenizer
 
 # 일본어 토크나이저 초기화
-tokenizer = JapaneseTokenizer("janome")
+tokenizer = JapaneseTokenizer("janome"
 
 # 문장 생성
 japanese_sentence = Sentence("私はベルリンが好き", use_tokenizer=tokenizer)
@@ -122,8 +122,6 @@ Sentence: "The grass is green ."   [− Tokens: 5]
 
 
 ## 라벨 추가
-
-In Flair, any data point can be labeled. For instance, you can label a word or label a sentence:
 
 ### 토큰에 라벨 추가
 
