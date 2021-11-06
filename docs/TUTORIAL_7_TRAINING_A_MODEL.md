@@ -293,13 +293,6 @@ plotter.plot_weights('weights.txt')
 
 ## 훈런 재개
 
-If you want to stop the training at some point and resume it at a later point, you should train with the parameter
-`checkpoint` set to `True`. This will save the model plus training parameters after every epoch. Thus, you can load the
-model plus trainer at any later point and continue the training exactly there where you have left.
-
-The example code below shows how to train, stop, and continue training of a `SequenceTagger`. The same can be done
-for `TextClassifier`.
-
 만약 특정 시점에서 훈련을 중지하고 나중에 다시 시작하려면 'checkpoint' 매개변수를 'True'로 설정하여 학습해야 합니다. 그렇게 하면 매 epoch 후에   
 모델과 훈련 매개변수를 저장할 것입니다. 
 따라서 나중에 언제든지 모델과 트레이너를 로드하고 남은 위치에서 정확히 훈련을 계속할 수 있습니다.
