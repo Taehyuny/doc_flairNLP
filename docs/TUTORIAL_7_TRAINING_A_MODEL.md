@@ -1,6 +1,7 @@
 # Tutorial 7: Training a Model
 
-튜토리얼 7에서는 최첨단 word embedding을 사용하여 여러분의 시퀀스 레이블링(sequence labeling)과 텍스트 분류(text classification) 모델을 훈련하는 방법을 살펴볼 것입니다.
+튜토리얼 7에서는 최첨단 word embedding을 사용하여 여러분의 시퀀스 레이블링(sequence labeling)과 텍스트 분류(text classification) 모델을   
+훈련하는 방법을 살펴볼 것입니다.
 
 이 튜토리얼을 학습하기 전에, 다음의 항목들을 이미 알고있다고 가정할 것입니다.
 * Base types: [TUTORIAL_1_BASICS](/docs/TUTORIAL_1_BASICS.md)
@@ -12,10 +13,8 @@
 
 ## 품사 Tagging 모델 훈련
 
-다음 예제는 간단한 글로브(Glove) 임베딩을 이용하여 UD_ENGLISH (English universal dependency treebank) 데이터를 통해 훈련된 작은 품사 tagger   
-모델에 대한 코드입니다.
-이 예제에서는 더 빠르게 작동시키기 위해 기존 데이터의 10%로 다운샘플링하여 진행했지만, 보통의 경우에는 전체 데이터셋으로 훈련   
-시켜야 합니다:
+다음 예제는 간단한 글로브(Glove) 임베딩을 이용하여 UD_ENGLISH (English universal dependency treebank) 데이터를 통해 훈련된 작은 품사 tagger 모델에 대한 코드입니다.
+이 예제에서는 더 빠르게 작동시키기 위해 기존 데이터의 10%로 다운샘플링하여 진행했지만, 보통의 경우에는 전체 데이터셋으로 훈련시켜야 합니다:
 
 ```python
 from flair.datasets import UD_ENGLISH
@@ -120,12 +119,10 @@ trainer.train('resources/taggers/sota-ner-flair',
 
 ## 변환기를 사용하여 개체명 인식 (NER) 모델 훈련하기
 
-You can get **even better numbers** if you use transformers as embeddings, fine-tune them and use full document context
-(see our [FLERT](https://arxiv.org/abs/2011.06993) paper for details). It's state-of-the-art but much slower than the
-above model.
+임베딩으로 변환기를 사용하고 미세 조정하고 전체 문서 컨텍스트를 사용하면 **훨씬 더 나은 수치**를 얻을 수 있습니다. (자세한 내용은 [FLERT](https://arxiv.org/abs/2011.06993) 문서 참조)   
+이는 최신식이지만 위의 모델보다 훨씬 느립니다.
 
-Change the script to use transformer embeddings and change the training routine to fine-tune with AdamW optimizer and a
-tiny learning rate instead of SGD:
+변환기 임베딩을 사용하도록 스크립트를 변경하고 SGD 대신 AdamW optimizer 및 작은 학습률로 미세 조정하도록 훈련 루틴을 변경하세요:
 
 ```python
 from flair.datasets import CONLL_03
@@ -174,19 +171,17 @@ trainer.train('resources/taggers/sota-ner-flert',
               )
 ```
 
-This will give you state-of-the-art numbers similar to the ones reported
-in [Schweter and Akbik (2021)](https://arxiv.org/abs/2011.06993).
+이는 [Schweter and Akbik (2021)](https://arxiv.org/abs/2011.06993)에 보고된 최근 수치와 비슷하게 나올 것입니다.
 
-## Training a Text Classification Model
+## 텍스트 분류 모델 훈련하기
 
-Training other types of models is very similar to the scripts for training sequence labelers above. For text
-classification, use an appropriate corpus and use document-level embeddings instead of word-level embeddings (see
-tutorials on both for difference). The rest is exactly the same as before!
+다른 유형의 모델을 훈련시키는 것은 위의 시퀀스 레이블러를 교육하기 위한 스크립트와 매우 유사합니다. 텍스트 분류의 경우 적절한 말뭉치를 사용하고   
+word-level 임베딩 대신 document-level 임베딩을 사용하세요. (차이점은 이 둘에 대한 튜토리얼을 참조하세요.) 나머지는 이전과 동일합니다!
 
-The best results in text classification use fine-tuned transformers with `TransformerDocumentEmbeddings` as shown in the
-code below:
+텍스트 분류에서 가장 좋은 결과는 아래 코드와 같이 `TransformerDocumentEmbeddings`와 함께 미세 조정된 변환기를 사용합니다:
 
-(If you don't have a big GPU to fine-tune transformers, try `DocumentPoolEmbeddings` or `DocumentRNNEmbeddings` instead; sometimes they work just as well!)
+(변환기를 미세 조정할 수 있는 큰 GPU가 없는 경우 대신 `DocumentPoolEmbeddings` 또는 `DocumentRNNEmbeddings`를 사용해 보세요.   
+가끔 제대로 작동하기도 합니다!)
 
 ```python
 import torch
@@ -219,8 +214,7 @@ trainer.train('resources/taggers/question-classification-with-transformer',
               )
 ```
 
-Once the model is trained you can load it to predict the class of new sentences. Just call the `predict` method of the
-model.
+모델이 학습되면 이것을 로드하여 새로운 문장의 클래스를 예측할 수 있습니다. 모델의 'predict' 메서드를 호출하기만 하면 됩니다.
 
 ```python
 classifier = TextClassifier.load('resources/taggers/question-classification-with-transformer/final-model.pt')
@@ -231,12 +225,10 @@ classifier.predict(sentence)
 print(sentence.labels)
 ```
 
-## Multi-Dataset Training
+## 멀티 데이터셋 훈련하기
 
-Now, let us train a single model that can PoS tag text in both English and German. To do this, we load both the English
-and German UD corpora and create a MultiCorpus object. We also use the new multilingual Flair embeddings for this task.
-
-All the rest is same as before, e.g.:
+이제 영어와 독일어로 텍스트에 PoS 태그를 지정할 수 있는 단일 모델을 훈련해 보겠습니다. 이를 위해 영어 및 독일어 UD 말뭉치를 로드하고 멀티 말뭉치 개체를 만듭니다. 이 작업을 위해 새로운 다국어 Flair 임베딩을 사용할 것입니다. 나머지는 모두 이전과 동일합니다.   
+e.g.: 
 
 ```python
 from flair.data import MultiCorpus
@@ -274,15 +266,14 @@ trainer.train('resources/taggers/example-universal-pos',
               )
 ```
 
-This gives you a multilingual model. Try experimenting with more languages!
+이는 다국어 모델을 제공합니다. 더 많은 언어로 실험해 보세요!
 
-## Plotting Training Curves and Weights
+## 훈련 곡선 및 가중치 Plotting
 
-Flair includes a helper method to plot training curves and weights in the neural network. The `ModelTrainer`
-automatically generates a `loss.tsv` in the result folder. If you set
-`write_weights=True` during training, it will also generate a `weights.txt` file.
+Flair에는 신경망에서 훈련 곡선과 가중치를 표시하는 도우미 메서드가 포함되어 있습니다. `ModelTrainer`는 결과 폴더에 `loss.tsv`를 자동으로   
+생성합니다. 훈련 중에 `write_weights=True`로 설정하면 `weights.txt` 파일도 생성됩니다.
 
-After training, simple point the plotter to these files:
+훈련 후 plotter가 다음 파일을 가리킬 것입니다:
 
 ```python
 # set write_weights to True to write weights
@@ -298,9 +289,9 @@ plotter.plot_training_curves('loss.tsv')
 plotter.plot_weights('weights.txt')
 ```
 
-This generates PNG plots in the result folder.
+결과 폴더에 PNG 플롯이 생성될 것입니다.
 
-## Resuming Training
+## 훈런 재개
 
 If you want to stop the training at some point and resume it at a later point, you should train with the parameter
 `checkpoint` set to `True`. This will save the model plus training parameters after every epoch. Thus, you can load the
@@ -308,6 +299,12 @@ model plus trainer at any later point and continue the training exactly there wh
 
 The example code below shows how to train, stop, and continue training of a `SequenceTagger`. The same can be done
 for `TextClassifier`.
+
+만약 특정 시점에서 훈련을 중지하고 나중에 다시 시작하려면 'checkpoint' 매개변수를 'True'로 설정하여 학습해야 합니다. 그렇게 하면 매 epoch 후에   
+모델과 훈련 매개변수를 저장할 것입니다. 
+따라서 나중에 언제든지 모델과 트레이너를 로드하고 남은 위치에서 정확히 훈련을 계속할 수 있습니다.
+
+아래 예제 코드는 `SequenceTagger`의 훈련, 중지 및 계속 훈련 방법을 보여줍니다. 'TextClassifier'의 경우도 마찬가지입니다. 
 
 ```python
 from flair.data import Corpus
@@ -352,46 +349,40 @@ trainer.train('resources/taggers/example-ner',
               checkpoint=True)
 ```
 
-## Scalability: Training with Large Datasets
+## Scalability: 대규모 데이터셋으로 훈련하기
 
-Many embeddings in Flair are somewhat costly to produce in terms of runtime and may have large vectors. Examples of this
-are Flair- and Transformer-based embeddings. Depending on your setup, you can set options to optimize training time.
+Flair의 많은 임베딩은 런타임 측면에서 생성하는 데 다소 비용이 많이 들고 큰 벡터를 가질 수 있습니다. 이에 대한 예는 Flair 및 Transformer 기반 임베딩입니다. 설정에 따라 훈련 시간을 최적화하는 옵션을 설정할 수 있습니다.
 
-### Setting the Mini-Batch Size
+### Mini-Batch 크기 설정
 
-The most important is `mini_batch_size`: Set this to higher values if your GPU can handle it to get good speed-ups. However, if 
-your data set is very small don't set it too high, otherwise there won't be enough learning steps per epoch.
+가장 중요한 것은 `mini_batch_size`입니다. GPU가 속도 향상을 위해 처리할 수 있는 경우 더 높은 값으로 설정하세요.   
+그러나 데이터 세트가 매우 작은 경우 너무 높게 설정하지 마세요. 그렇지 않으면 Epoch당 학습 단계가 충분하지 않을 것입니다.
 
-A similar parameter is `mini_batch_chunk_size`: This parameter causes mini-batches to be further split into chunks, causing slow-downs
-but better GPU-memory effectiveness. Standard is to set this to None (just don't set it) - only set this if your GPU cannot handle the desired
-mini-batch size. Remember that this is the opposite of `mini_batch_size` so this will slow down computation.
+유사한 매개변수는 `mini_batch_chunk_size`입니다. 이 매개변수는 미니 배치를 청크로 더 분할하여 속도를 늦추지만 GPU 메모리 효율성을   
+향상시킵니다. 표준은 이것을 None으로 설정하는 것입니다 - GPU가 원하는 미니 배치 크기를 처리할 수 없는 경우에만 이것을 설정하세요.   
+이는 `mini_batch_size`의 반대이므로 계산 속도가 느려질 것입니다.
 
-### Setting the Storage Mode of Embeddings
+### Embedding의 저장 모드 설정
 
-Another main parameter you need to set is the `embeddings_storage_mode` in the `train()` method of the `ModelTrainer`. It
-can have one of three values:
+설정해야 하는 또 다른 주요 매개변수는 `ModelTrainer`의 `train()` 메서드에 있는 `embeddings_storage_mode`입니다.   
+다음 세 가지 값 중 하나를 가질 수 있습니다:
 
-1. **'none'**: If you set `embeddings_storage_mode='none'`, embeddings do not get stored in memory. Instead they are
-   generated on-the-fly in each training mini-batch (during *training*). The main advantage is that this keeps your
-   memory requirements low. Always set this if fine-tuning transformers.
+1. **'none'**: `embeddings_storage_mode='none'`으로 설정하면 임베딩이 메모리에 저장되지 않습니다. 대신 (**훈련** 동안) 각 훈련 미니 배치에서 즉석에서 생성됩니다. 주요한 이점은 메모리 요구 사항을 낮게 유지한다는 것입니다. 변압기를 미세 조정하는 경우 항상 이것을 설정하세요.
+   
+   
 
-2. **'cpu'**: If you set `embeddings_storage_mode='cpu'`, embeddings will get stored in regular memory.
+2. **'cpu'**: `embeddings_storage_mode='cpu'`를 설정하면 임베딩이 일반 메모리에 저장될 것입니다.
 
-* during *training*: this in many cases speeds things up significantly since embeddings only need to be computed in the
-  first epoch, after which they are just retrieved from memory. A disadvantage is that this increases memory
-  requirements. Depending on the size of your dataset and your memory setup, this option may not be possible.
-* during *inference*: this slow down your inference when used with a GPU as embeddings need to be moved from GPU memory
-  to regular memory. The only reason to use this option during inference would be to not only use the predictions but
-  also the embeddings after prediction.
+* during *training*: 임베딩은 첫 번째 epoch에서만 계산되고 그 후에는 메모리에서 검색되기 때문에 많은 경우에 속도가 크게 빨라집니다. 이것의 단점은 메모리 요구 사항이 증가한다는 것입니다. 데이터셋의 크기와 메모리 설정에 따라 이 옵션이 불가능할 수 있습니다.
+* during *inference*: GPU 메모리에서 일반 메모리로 임베딩을 이동해야 하므로 GPU와 함께 사용할 때 추론 속도가 느려집니다. 추론 중에 이 옵션을 사용하는 유일한 이유는 예측뿐만 아니라 예측 후 임베딩도 사용하기 위해서입니다.
 
-3. **'gpu'**: If you set `embeddings_storage_mode='gpu'`, embeddings will get stored in CUDA memory. This will often be
-   the fastest one since this eliminates the need to shuffle tensors from CPU to CUDA over and over again. Of course,
-   CUDA memory is often limited so large datasets will not fit into CUDA memory. However, if the dataset fits into CUDA
-   memory, this option is the fastest one.
+3. **'gpu'**: `embeddings_storage_mode='gpu'`로 설정하면 임베딩은 CUDA 메모리에 저장될 것입니다. 이는 CPU에서 CUDA로 텐서를 계속해서 섞을 필요가 없기 때문에 가장 빠른 경우가 많습니다. 물론 CUDA 메모리는 종종 제한되어 있어 큰 데이터셋은 CUDA 메모리에 맞지 않습니다. 하지만 데이터셋이 CUDA 메모리에 맞는 경우에는 이 옵션이 가장 빠릅니다.
+   
 
 ## Next
 
-If you don't have training data (or only very little), our TARS approach might be best for you. Check out the TARS
-tutorial on [few-shot and zero-shot classification](/resources/docs/TUTORIAL_10_TRAINING_ZERO_SHOT_MODEL.md)).
+훈련 데이터가 없거나 아주 적은 경우 TARS 접근 방식이 가장 적합할 수 있습니다.   
+[TUTORIAL_10_TRAINING_ZERO_SHOT_MODEL](/docs/TUTORIAL_10_TRAINING_ZERO_SHOT_MODEL.md): Few-shot and zero-shot classification에 대한 TARS 튜토리얼을 확인하세요.
 
-Alternatively, you can look into [training your own embeddings](/resources/docs/TUTORIAL_9_TRAINING_LM_EMBEDDINGS.md).
+또는   
+[TUTORIAL_9_TRAINING_LM_EMBEDDINGS](/docs/TUTORIAL_9_TRAINING_LM_EMBEDDINGS.md): Training your own embeddings을 살펴보세요.
