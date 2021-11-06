@@ -15,7 +15,8 @@
 
 다음 예제는 간단한 글로브(Glove) 임베딩을 이용하여 UD_ENGLISH (English universal dependency treebank) 데이터를 통해 훈련된 작은 품사 tagger   
 모델에 대한 코드입니다.
-이 예제에서는 더 빠르게 작동시키기 위해 기존 데이터의 10%로 다운샘플링하여 진행했지만, 보통의 경우에는 전체 데이터셋으로 훈련시켜야 합니다:
+이 예제에서는 더 빠르게 작동시키기 위해 기존 데이터의 10%로 다운샘플링하여 진행했지만, 보통의 경우에는 전체 데이터셋으로 훈련   
+시켜야 합니다:
 
 ```python
 from flair.datasets import UD_ENGLISH
