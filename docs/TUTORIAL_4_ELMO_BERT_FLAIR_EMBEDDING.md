@@ -18,7 +18,7 @@
 | [`TransformerWordEmbeddings`](https://github.com/flairNLP/flair/tree/master/resources/docs/embeddings/TRANSFORMER_EMBEDDINGS.md) | Embeddings from pretrained [transformers](https://huggingface.co/transformers/pretrained_models.html) (BERT, XLM, GPT, RoBERTa, XLNet, DistilBERT etc.) | [Devlin et al. (2018)](https://www.aclweb.org/anthology/N19-1423/) [Radford et al. (2018)](https://d4mucfpksywv.cloudfront.net/better-language-models/language_models_are_unsupervised_multitask_learners.pdf)  [Liu et al. (2019)](https://arxiv.org/abs/1907.11692) [Dai et al. (2019)](https://arxiv.org/abs/1901.02860) [Yang et al. (2019)](https://arxiv.org/abs/1906.08237) [Lample and Conneau (2019)](https://arxiv.org/abs/1901.07291) |  
 | [`WordEmbeddings`](https://github.com/flairNLP/flair/tree/master/resources/docs/embeddings/CLASSIC_WORD_EMBEDDINGS.md) | Classic word embeddings |  |
 
-## Combining BERT와  FLAIR
+## BERT와 Flair 조합하기
 우리는 Flair, ELMo, BERT 그리고 고전적 word embedding을 쉽게 결합할 수 있습니다. 조합하려는 임베딩을 각각 인스턴스화하고 `StackedEmbedding`에서 사용하면 됩니다.
 아래는 다국어 Flair와 BERT 임베딩을 사용해 강력한 다국어 다운스트림 작업 모델을 훈련하는 예시입니다.
 
