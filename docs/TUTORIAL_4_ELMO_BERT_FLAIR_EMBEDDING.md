@@ -1,8 +1,8 @@
 # 튜토리얼 4 : Word Embedding의 종류
-이번 챕터는 튜토리얼이라기보다 Flair에서 지원하는 Embedding의 종류를 소개합니다. 아래 테이블의 Embedding을 클릭해 사용법을 볼 수 있습니다. 설명들은 [base types](/resources/docs/TUTORIAL_1_BASICS.md), [standard word embeddings](/resources/docs/TUTORIAL_3_WORD_EMBEDDING.md), 그리고 'StackedEmbeddings'클래스에 익숙하다는 전제로 작성되어 있습니다.
+이번 챕터는 튜토리얼이라기보다 Flair에서 지원하는 Embedding의 종류를 소개합니다. 아래 테이블의 Embedding을 클릭해 사용법을 볼 수 있습니다. 설명들은 [base types](/resources/docs/TUTORIAL_1_BASICS.md)과 [standard word embeddings](/resources/docs/TUTORIAL_3_WORD_EMBEDDING.md), 그리고 `StackedEmbeddings`클래스에 익숙하다는 전제로 작성되어 있습니다.
 
 ## 개요
-모든 word embedding 클래스들은 'TokenEmbeddings' 클래스를 상속하고 있으며 'embed()' 메서드를 구현하는 것을 통해 임베드 할 텍스트를 호출하게 됩니다. Flair를 사용하는 대부분의 경우 다양하고 복잡한 embedding 과정이 인터페이스 뒤로 숨겨져 있습니다.사용자는 단순히 필요한 embedding 클래스를 인스턴스화하고 'embed()'를 호출해 텍스트를 임베드 하면 됩니다.
+모든 word embedding 클래스들은 `TokenEmbeddings` 클래스를 상속하고 있으며 `embed()` 메서드를 구현하는 것을 통해 임베드 할 텍스트를 호출하게 됩니다. Flair를 사용하는 대부분의 경우 다양하고 복잡한 embedding 과정이 인터페이스 뒤로 숨겨져 있습니다.사용자는 단순히 필요한 embedding 클래스를 인스턴스화하고 `embed()`를 호출해 텍스트를 임베드 하면 됩니다.
 
 현재 지원하고 있는 임베딩의 종류입니다 :
 
