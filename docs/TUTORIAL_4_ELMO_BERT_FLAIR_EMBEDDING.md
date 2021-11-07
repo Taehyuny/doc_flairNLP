@@ -18,3 +18,48 @@
 | [`TransformerWordEmbeddings`](https://github.com/flairNLP/flair/tree/master/resources/docs/embeddings/TRANSFORMER_EMBEDDINGS.md) | Embeddings from pretrained [transformers](https://huggingface.co/transformers/pretrained_models.html) (BERT, XLM, GPT, RoBERTa, XLNet, DistilBERT etc.) | [Devlin et al. (2018)](https://www.aclweb.org/anthology/N19-1423/) [Radford et al. (2018)](https://d4mucfpksywv.cloudfront.net/better-language-models/language_models_are_unsupervised_multitask_learners.pdf)  [Liu et al. (2019)](https://arxiv.org/abs/1907.11692) [Dai et al. (2019)](https://arxiv.org/abs/1901.02860) [Yang et al. (2019)](https://arxiv.org/abs/1906.08237) [Lample and Conneau (2019)](https://arxiv.org/abs/1901.07291) |  
 | [`WordEmbeddings`](https://github.com/flairNLP/flair/tree/master/resources/docs/embeddings/CLASSIC_WORD_EMBEDDINGS.md) | Classic word embeddings |  |
 
+## Combining BERT와  FLAIR
+우리는 Flair, ELMo, BERT 그리고 고전적 word embedding을 쉽게 결합할 수 있습니다. 조합하려는 임베딩을 각각 인스턴스화하고 `StackedEmbedding`에서 사용하면 됩니다.
+아래는 다국어 Flair와 BERT 임베딩을 사용해 강력한 다국어 다운스트림 작업 모델을 훈련하는 예시입니다.
+
+우선 조합하고자 하는 임베딩을 인스턴스화합니다.
+```python
+from flair.embeddings import FlairEmbeddings, TransformerWordEmbeddings
+
+# Flair 임베딩 초기화
+flair_forward_embedding = FlairEmbeddings('multi-forward')
+flair_backward_embedding = FlairEmbeddings('multi-backward')
+
+# 다국어 BERT 초기화
+bert_embedding = TransformerWordEmbeddings('bert-base-multilingual-cased')
+```
+
+이제 `StackedEmbeddings` 클래스를 초기화 하고 앞에서 초기화한 세가지 임베딩이 포함된 목록을 전달합니다.
+
+```python
+from flair.embeddings import StackedEmbeddings
+
+# 앞에서 초기화 한 임베딩을 결합한 StackedEmbedding 객체를 생성합니다.
+stacked_embeddings = StackedEmbeddings(
+    embeddings=[flair_forward_embedding, flair_backward_embedding, bert_embedding])
+```
+
+완성입니다! 다른 임베딩을 사용하는 것과 마찬가지로 문장에 대해 `embed()` 메서드를 호출하면 됩니다.
+
+```python
+sentence = Sentence('The grass is green .')
+
+# 단일 임베딩을 사용하는 것과 마찬가지로 StackedEmbedding을 사용합니다.
+stacked_embeddings.embed(sentence)
+
+# 문장에 대한 Token을 확인합니다.
+for token in sentence:
+    print(token)
+    print(token.embedding)
+```
+
+단어들은 세 가지 다른 임베딩이 조합된 것으로 임베드 되었습니다. output은 여전히 PyTorch 벡터입니다.
+
+## 다음 튜토리얼
+텍스트 분류와 같은 작업을 위해 전체 텍스트 문단을 임베드하는 [document embeddings](/resources/docs/TUTORIAL_5_DOCUMENT_EMBEDDINGS.md)
+혹은 말뭉치를 로드하는 튜토리얼 [loading your corpus](/resources/docs/TUTORIAL_6_CORPUS.md), 이 내용은 나만의 모델을 훈련하기 위한 전제조건입니다[training your own models](/resources/docs/TUTORIAL_7_TRAINING_A_MODEL.md).
