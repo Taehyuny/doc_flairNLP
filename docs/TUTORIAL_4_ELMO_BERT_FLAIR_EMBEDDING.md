@@ -61,4 +61,4 @@ for token in sentence:
 단어들은 세 가지 다른 임베딩이 조합된 것으로 임베드 되었습니다. output은 여전히 PyTorch 벡터입니다.
 
 ## 다음 튜토리얼
-텍스트 분류와 같은 작업을 위해 전체 텍스트 [문단을 임베드](/resources/docs/TUTORIAL_5_DOCUMENT_EMBEDDINGS.md)하는 튜토리얼 혹은 [나만의 모델을 훈련](/resources/docs/TUTORIAL_7_TRAINING_A_MODEL.md)하기 위한 전제조건인 [말뭉치(corpus)를 로드](/resources/docs/TUTORIAL_6_CORPUS.md)하는 튜토리얼이 준비되어 있습니다.
+텍스트 분류와 같은 작업을 위해 전체 텍스트 [문서를 임베드](/resources/docs/TUTORIAL_5_DOCUMENT_EMBEDDINGS.md)하는 튜토리얼 혹은 [나만의 모델을 훈련](/resources/docs/TUTORIAL_7_TRAINING_A_MODEL.md)하기 위한 전제조건인 [말뭉치(corpus)를 로드](/resources/docs/TUTORIAL_6_CORPUS.md)하는 튜토리얼이 준비되어 있습니다.
