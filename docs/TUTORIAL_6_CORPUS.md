@@ -3,7 +3,7 @@
 이번 튜토리얼은 여러분이 라이브러리의 [기본 유형](/resources/docs/TUTORIAL_1_BASICS.md)에 익숙하다 가정하고 진행됩니다.
 
 ## 말뭉치 오브젝트
-`말뭉치`는 모델을 훈련하는데 사용되는 데이터 세트입니다. 이는 모델 훈련 중 훈련, 검증 및 테스트 분할에 사용되는 문장들, 개발을 위한 문장 목록 및 테스트 문장 목록으로 구성됩니다.
+`corpus`는 모델을 훈련하는데 사용되는 데이터 세트입니다. 이는 모델 훈련 중 훈련, 검증 및 테스트 분할에 사용되는 문장들, 개발을 위한 문장 목록 및 테스트 문장 목록으로 구성됩니다.
 
 다음 예제는 the Universal Dependency Treebank for English를 말뭉치 오브젝트로 초기화하는 코드입니다.
 ```python
@@ -11,7 +11,7 @@ import flair.datasets
 corpus = flair.datasets.UD_ENGLISH()
 ```
 위 코드를 처음 실행한다면 the Universal Dependency Treebank for English를 하드디스크에 다운로드합니다.
-그 다음 훈련, 테스트, 개발을 위한 `말뭉치`로 분할합니다. 아래 코드를 통해 각각의 `말뭉치`에 몇개의 문장이 들어있는지 확인할 수 있습니다.
+그 다음 훈련, 테스트, 개발을 위한 `corpus`로 분할합니다. 아래 코드를 통해 각각의 `corpus`에 몇개의 문장이 들어있는지 확인할 수 있습니다.
 ```python
 # 몇개의 문장이 train split에 있는지 출력합니다.
 print(len(corpus.train))
@@ -45,7 +45,7 @@ What <WP> if <IN> Google <NNP> Morphed <VBD> Into <IN> GoogleOS <NNP> ? <.>
 이 말뭉치는 tag되어 있고 훈련에 사용할 수 있습니다.
 
 ### 도움을 주는 함수들
-`말뭉치`는 유용한 도움 함수들이 많이 포함되어 있습니다. `downsample()`을 호출하고 비율을 정해 데이터를 다운샘플링 할 수 있습니다. 
+`corpus`는 유용한 도움 함수들이 많이 포함되어 있습니다. `downsample()`을 호출하고 비율을 정해 데이터를 다운샘플링 할 수 있습니다. 
 우선 말뭉치를 얻습니다.
 ```python
 import flair.datasets
@@ -74,7 +74,7 @@ Corpus: 1255 train + 201 dev + 208 test sentences
 ```
 
 ### 레이블 사전 만들기
-다수의 경우 예측할 레이블이 포함되어 있는 "사전"이 필요합니다. `make_label_dictionary` 메소드를 호출하고 `label_type`을 전달해 `말뭉치`에서 바로 사전을 만들 수 있습니다.
+다수의 경우 예측할 레이블이 포함되어 있는 "사전"이 필요합니다. `make_label_dictionary` 메소드를 호출하고 `label_type`을 전달해 `corpus`에서 바로 사전을 만들 수 있습니다.
 
 예를 들어, 위에서 인스턴스화된 UD_ENGLISH 말뭉치들은 일반 POS tags('POS'), 범용 POS tags('upos'), 형태학적 tags('tense', 'number'...) 등 여러 레이어의 주석을 가지고 있습니다. 다음 코드는 `label_type='upos'`를 인자로 사용하는 예시입니다.
 ```python
