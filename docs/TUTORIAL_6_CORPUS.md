@@ -483,4 +483,4 @@ corpus: Corpus = ClassificationCorpus(data_folder,
 `FastText` 형식은 열이 없기 때문에 주석의 이름을 직접 정의해야 합니다. 위 예제는 `label_type='topic'`인 말뭉치를 로드하고 있음을 나타냅니다.
 
 ## 다음 튜토리얼
-이제 [나만의 모델을 훈련](/resources/docs/TUTORIAL_7_TRAINING_A_MODEL.md)것이 남았습니다.
+이제 [나만의 모델을 훈련](/resources/docs/TUTORIAL_7_TRAINING_A_MODEL.md)을 알아보겠습니다.
