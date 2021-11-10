@@ -17,7 +17,7 @@ flairNLP를 한국어로 이해하기 쉽게 번역한 튜토리얼 번역본입
 Flair는:
 
 * **강력한 NLP 라이브러리입니다.**    
- Flair를 사용하면 명명된 개체 인식(NER), 품사 태깅(PoS), [생체 의학 데이터](resources/docs/HUNFLAIR.md)에 대한 특별 지원과 같은 최첨단 자연어 처리(NLP) 모델을 텍스트에 적용할 수 있습니다.
+ Flair를 사용하면 명명된 개체 인식(NER), 품사 태깅(PoS), [생체 의학 데이터](https://github.com/flairNLP/flair/blob/94393aa82444f28c5a1da6057b8ff57b3cb390e6/resources/docs/HUNFLAIR.md)에 대한 특별 지원과 같은 최첨단 자연어 처리(NLP) 모델을 텍스트에 적용할 수 있습니다.
  또한 빠르게 증가하는 언어를 지원하여 명확화 및 분류를 감지합니다.
 
 * **텍스트 임베딩 라이브러리입니다.**    
