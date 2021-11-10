@@ -111,7 +111,7 @@ Span [3]: "Berlin"   [− Labels: LOC (0.9992)]
 
 튜토리얼에서는 기본 NLP 클래스가 작동하는 방법, 사전 훈련된 모델을 로드하여 텍스트에 태그를 지정하는 방법, 다른 단어 또는 문서 임베딩으로 텍스트를 포함하는 방법, 고유한 언어 모델, 시퀀스 레이블링 모델 및 텍스트 분류 모델에 대해 설명하고있습니다. 불분명한 것이 있으면 알려주세요.
 
-설치 지침 및 자습서가 포함된 **[biomedical NER and datasets](/resources/docs/HUNFLAIR.md)** 전용 랜딩 페이지도 있습니다.
+설치 지침 및 자습서가 포함된 **[biomedical NER and datasets](https://github.com/flairNLP/flair/blob/94393aa82444f28c5a1da6057b8ff57b3cb390e6/resources/docs/HUNFLAIR.md)** 전용 랜딩 페이지도 있습니다.
 
 Flair를 사용하는 방법을 보여주는 훌륭한 타사 기사 및 게시물도 있습니다:
 * [How to build a text classifier with Flair](https://towardsdatascience.com/text-classification-with-state-of-the-art-nlp-library-flair-b541d7add21f)
@@ -181,7 +181,7 @@ Flair 임베딩(PooledFlairEmbeddings)의 풀링 버전을 사용하는 경우 [
 ## Contributing
 
 contributing에 관심을 가져주셔서 감사합니다! 참여하는 방법에는 여러 가지가 있습니다.
-[contributor guidelines](CONTRIBUTING.md)으로 시작한 다음
+[contributor guidelines](https://github.com/flairNLP/flair/blob/94393aa82444f28c5a1da6057b8ff57b3cb390e6/CONTRIBUTING.md)으로 시작한 다음
 특정 작업에 대해서는 [open issues](https://github.com/flairNLP/flair/issues)를 확인하세요.
 
 API에 대해 더 깊이 알고자 하는 기여자의 경우 레포지토리를 복제하고 메서드를 호출하는 방법에 대한 예제를 보려면 단위 테스트를 확인하는 것이 좋습니다. 
