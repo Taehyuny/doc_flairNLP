@@ -1,4 +1,4 @@
-# Tutorial 10: Few-Shot과 Zero-Shot 분류 (TARS)
+# 튜토리얼 10: Few-Shot과 Zero-Shot 분류 (TARS)
 
 TARS(Task-aware representation of sentence)는 [Halder et al. (2020)](https://kishaloyhalder.github.io/pdfs/tars_coling2020.pdf)이 **텍스트 분류를 위한 퓨샷 및 제로샷 학습**을 위한 간단하고 효과적인 방법으로 도입했습니다.
 이것은 훈련 예제 없이도 텍스트를 분류할 수 있음을 의미합니다.
