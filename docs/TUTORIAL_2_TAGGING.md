@@ -357,9 +357,9 @@ POSITION이라는 라벨이 문장에 추가되어 이 문장이 긍정적인 �
 
 포함되지 않은 클래스에 레이블을 지정해야 하는 경우
 사전 훈련된 제로샷 분류기 TARS
-([제로샷 자습서](/resources/docs/TUTORIAL_10_TRA로 건너뛰기)INING_ZERO_SHOT_MODEL.md)).
+([제로샷 자습서](/docs/TUTORIAL_10_TRA로 건너뛰기)INING_ZERO_SHOT_MODEL.md)).
 TARS는 임의 클래스에 대해 텍스트 분류를 수행할 수 있습니다.
 
 ## 다음
 
-이제 텍스트를 포함하기 위해 다른 [워드 임베딩](/리소스/docs/TUTORIAL_3_WORD_EMBeding.md)을 사용하는 방법에 대해 알아보겠습니다.
+이제 텍스트를 포함하기 위해 다른 [워드 임베딩](/docs/TUTORIAL_3_WORD_EMBeding.md)을 사용하는 방법에 대해 알아보겠습니다.
