@@ -95,7 +95,7 @@ flair_embedding_forward = FlairEmbeddings('de-forward')
 flair_embedding_backward = FlairEmbeddings('de-backward')
 ```
 
-표준 사용에 대한 자세한 정보와 함께 사전 훈련된 모든 FlairEmbedings 모델 [여기](/리소스/docs/embeddings/FLAIR_EMBEDDINGS.md)의 전체 목록을 확인하십시오.
+표준 사용에 대한 자세한 정보와 함께 사전 훈련된 모든 FlairEmbedings 모델 [여기](https://github.com/flairNLP/flair/blob/master/resources/docs/embeddings/FLAIR_EMBEDDINGS.md)의 전체 목록을 확인하십시오.
 
 ## 스택 임베딩
 
